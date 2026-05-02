@@ -4,9 +4,11 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
 
-// Matches vite.config base: `/` in dev, `/WebDev-assignment-Part-2/` for gh-pages build
+// Set in vite.config define: repo path for GitHub Pages; "" locally.
 const routerBasename =
-  (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "") || undefined;
+  typeof __ROUTER_BASENAME__ !== "undefined" && __ROUTER_BASENAME__
+    ? __ROUTER_BASENAME__
+    : undefined;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
