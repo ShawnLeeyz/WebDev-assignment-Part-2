@@ -1,7 +1,11 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig({
+// Production: https://shawnleeyz.github.io/WebDev-assignment-Part-2/
+const GH_PAGES_BASE = "/WebDev-assignment-Part-2/";
+
+export default defineConfig(({ command }) => ({
+  base: command === "build" ? GH_PAGES_BASE : "/",
   plugins: [react()],
   server: {
     port: 5173,
@@ -12,4 +16,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));

@@ -4,9 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
 
+// Matches vite.config base: `/` in dev, `/WebDev-assignment-Part-2/` for gh-pages build
+const routerBasename =
+  (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "") || undefined;
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={routerBasename}>
       <App />
     </BrowserRouter>
   </React.StrictMode>

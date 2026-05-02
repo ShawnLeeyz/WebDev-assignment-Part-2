@@ -3,9 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
+  "scripts": {  
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/gh-pages-spa-fallback.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
