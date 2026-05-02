@@ -9,7 +9,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { supabase } from "../supabase.js";
+import { hasSupabaseEnv, supabase } from "../supabase.js";
 import { filterUpcomingUnassigned } from "../lib/upcomingBookings.js";
 
 const REF_PATTERN = /^BRN\d{5}$/;
@@ -47,12 +47,6 @@ function localDayUtcIsoRange() {
   const end = new Date(start);
   end.setDate(end.getDate() + 1);
   return { dayStart: start.toISOString(), dayEnd: end.toISOString() };
-}
-
-function hasSupabaseEnv() {
-  return Boolean(
-    import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY
-  );
 }
 
 export default function AdminPage() {

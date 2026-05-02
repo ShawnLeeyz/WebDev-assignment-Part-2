@@ -1,11 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { supabase } from "../supabase.js";
-
-function hasSupabaseEnv() {
-  return Boolean(
-    import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY
-  );
-}
+import { hasSupabaseEnv, supabase } from "../supabase.js";
 
 export default function DriversPage() {
   const [drivers, setDrivers] = useState([]);

@@ -1,13 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
-import { supabase } from "../supabase.js";
+import { hasSupabaseEnv, supabase } from "../supabase.js";
 
 const REF_PATTERN = /^BRN\d{5}$/;
-
-function hasSupabaseEnv() {
-  return Boolean(
-    import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY
-  );
-}
 
 /** @param {string | null | undefined} iso */
 function formatTimestamp(iso) {

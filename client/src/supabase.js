@@ -1,25 +1,22 @@
 import { createClient } from "@supabase/supabase-js";
 
 /**
- * Env: copy client/.env.example → client/.env (Vite only exposes VITE_*).
+ * Hardcoded for static hosting (e.g. GitHub Pages) so no build-time env is required.
+ * The anon key is public in the browser; protect data with RLS in Supabase.
  *
- * If inserts/selects fail with "row-level security", open Supabase → SQL and
- * add policies for the `bookings` table (or disable RLS for local testing only).
+ * If inserts/selects fail with "row-level security", add policies for `bookings`
+ * (or disable RLS for local testing only).
  *
- * Admin “bookings today” uses `created_at` (timestamptz, default now()). Add it
- * in Table Editor or SQL if your table does not already include that column.
- *
- * Drivers + `bookings.assigned_driver_id`: run `supabase/migrations/001_drivers.sql`
- * in the SQL Editor.
+ * Admin “bookings today” uses `created_at`. Drivers: see `supabase/migrations/001_drivers.sql`.
  */
 
-const url = import.meta.env.VITE_SUPABASE_URL;
-const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const SUPABASE_URL = "https://zapatcyvjxhspihadtgz.supabase.co";
+const SUPABASE_ANON_KEY =
+  "sb_publishable_nfFxOQj-5qfBWrzhftP6Gg_aTNL2se0";
 
-if (!url || !anonKey) {
-  console.warn(
-    "[CabsOnline] Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in client/.env"
-  );
+export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+/** Used by pages that previously checked VITE_* (not set in CI / GitHub Pages). */
+export function hasSupabaseEnv() {
+  return Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 }
-
-export const supabase = createClient(url || "", anonKey || "");

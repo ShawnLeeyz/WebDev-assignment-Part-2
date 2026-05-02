@@ -42,16 +42,6 @@ export default function BookingPage() {
       return;
     }
 
-    if (
-      !import.meta.env.VITE_SUPABASE_URL ||
-      !import.meta.env.VITE_SUPABASE_ANON_KEY
-    ) {
-      setClientError(
-        "Missing Supabase env: add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to client/.env"
-      );
-      return;
-    }
-
     setLoading(true);
     try {
       const booking_ref = await generateNextBookingRef();
