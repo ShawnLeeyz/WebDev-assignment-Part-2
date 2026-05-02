@@ -5,6 +5,12 @@ import { createClient } from "@supabase/supabase-js";
  *
  * If inserts/selects fail with "row-level security", open Supabase → SQL and
  * add policies for the `bookings` table (or disable RLS for local testing only).
+ *
+ * Admin “bookings today” uses `created_at` (timestamptz, default now()). Add it
+ * in Table Editor or SQL if your table does not already include that column.
+ *
+ * Drivers + `bookings.assigned_driver_id`: run `supabase/migrations/001_drivers.sql`
+ * in the SQL Editor.
  */
 
 const url = import.meta.env.VITE_SUPABASE_URL;

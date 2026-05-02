@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import BookingLocationMap from "../components/BookingLocationMap.jsx";
 import { supabase } from "../supabase.js";
 import { generateNextBookingRef } from "../lib/bookingRef.js";
 import { defaultDateTimeStrings, validateBookingForm } from "../validation.js";
@@ -138,6 +139,7 @@ export default function BookingPage() {
           <label htmlFor="sbname">Pickup suburb</label>
           <input
             id="sbname"
+            placeholder="e.g. Flatbush, Auckland"
             value={form.sbname}
             onChange={(e) => update("sbname", e.target.value)}
           />
@@ -146,10 +148,17 @@ export default function BookingPage() {
           <label htmlFor="dsbname">Destination suburb</label>
           <input
             id="dsbname"
+            placeholder="e.g. Flatbush, Auckland"
             value={form.dsbname}
             onChange={(e) => update("dsbname", e.target.value)}
           />
         </div>
+        <BookingLocationMap
+          pickupStreetNumber={form.snumber}
+          pickupStreetName={form.stname}
+          pickupSuburb={form.sbname}
+          destinationSuburb={form.dsbname}
+        />
         <div className="field">
           <label htmlFor="date">Pickup date * (DD/MM/YYYY)</label>
           <input

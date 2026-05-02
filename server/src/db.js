@@ -76,7 +76,7 @@ export function formatDbStartupError(err) {
       `    • Check DB_HOST / DB_PORT in ${path.join(SERVER_ROOT, ".env")} (default port 3306).\n`
     );
   } else if (code === "ER_ACCESS_DENIED_ERROR") {
-    lines.push(
+    lines.push( 
       "    • Wrong DB_USER or DB_PASSWORD in server/.env.\n"
     );
   } else if (code === "ER_BAD_DB_ERROR") {
