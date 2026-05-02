@@ -1,0 +1,66 @@
+<!--
+    This html file displays the form of the booking so that the user could input their details to book a taxi.
+    [Name: Shawn Lee]
+    [id: 23204035]
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CabsOnline</title>
+    <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+    <div class="container">
+        <h1>CabsOnline - Taxi Booking</h1>
+        
+        <div class="booking-form" id="bookingForm">
+            <div>
+                <label>Customer Name: *</label> <!-- * means required-->
+                <input type="text" id="cname" name="cname" autocomplete="off">
+            </div>
+            <div>
+                <label>Phone Number: *</label> <!-- * means required-->
+                <input type="text" id="phone" name="phone" autocomplete="off">
+            </div>
+            <div>
+                <label>Unit Number:</label>
+                <input type="text" id="unumber" name="unumber" autocomplete="off">
+            </div>
+            <div>
+                <label>Street Number: *</label> <!-- * means required-->
+                <input type="text" id="snumber" name="snumber" autocomplete="off">
+            </div>
+            <div>
+                <label>Street Name: *</label> <!-- * means required-->
+                <input type="text" id="stname" name="stname" autocomplete="off">
+            </div>
+            <div>
+                <label>Pickup Suburb:</label>
+                <input type="text" id="sbname" name="sbname" autocomplete="off">
+            </div>
+            <div>
+                <label>Destination Suburb:</label>
+                <input type="text" id="dsbname" name="dsbname" autocomplete="off">
+            </div>
+            <div>
+                <label>Pickup Date: *</label> <!-- * means required-->
+                <input type="text" id="date" name="date" placeholder="DD/MM/YYYY">
+            </div>
+            <div>
+                <label>Pickup Time: *</label> <!-- * means required-->
+                <input type="time" id="time" name="time">
+            </div>
+            <!-- change to type="button" -->
+            <input type="button" id="bookButton" value="Book Now">
+        </div>
+        
+        <div>
+            <p id="reference"></p> <!-- This will display the booking reference number -->
+        </div>
+    </div>
+    
+    <script src="booking.js"></script>
+</body>
+</html>
